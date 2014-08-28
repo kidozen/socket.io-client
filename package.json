@@ -20,7 +20,7 @@
   , "dependencies": {
         "uglify-js": "1.2.5"
       , "ws": "https://github.com/kidozen/ws/tarball/master"
-      , "xmlhttprequest": "1.4.2"
+      , "xmlhttprequest": "https://github.com/kidozen/node-xmlhttprequest/tarball/master"
       , "active-x-obfuscator": "0.0.1"
     }
   , "devDependencies": {
