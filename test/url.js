@@ -5,8 +5,13 @@ var expect = require('expect.js');
 
 describe('url', function(){
 
+  beforeEach(function(){
+    loc = {
+      hostname: "woot.com"
+    };
+  });
+
   it('works with undefined', function(){
-    loc.hostname = 'woot.com';
     loc.protocol = 'https:';
     loc.port = 4005;
     loc.host = loc.hostname + ':' + loc.port;
@@ -17,11 +22,20 @@ describe('url', function(){
   });
 
   it('works with relative paths', function(){
-    loc.hostname = 'woot.com';
     loc.protocol = 'https:';
     var parsed = url('/test', loc);
     expect(parsed.host).to.be('woot.com');
     expect(parsed.protocol).to.be('https');
+    expect(parsed.port).to.be('443');
+  });
+
+  it('works with relative paths with port', function(){
+    loc.protocol = 'http:';
+    loc.port = 3000;
+    var parsed = url('/test', loc);
+    expect(parsed.host).to.be('woot.com');
+    expect(parsed.protocol).to.be('http');
+    expect(parsed.port).to.be('3000');
   });
 
   it('works with no protocol', function(){
